@@ -1,0 +1,67 @@
+﻿@model CustomerModel
+
+<form asp-action="Save" asp-controller="Customer">
+    <div class="container">
+        <div class="form-group">
+
+            @if (Model.CustomerID != null)
+            {
+                <input type="hidden" asp-for="CustomerID" />
+            }
+
+            <label><span class="text-danger">*</span>CustomerName </label>
+            <input type="text" class="form-control" asp-for="CustomerName" name="CustomerName" placeholder="Enter CustomerName" />
+            <span asp-validation-for="CustomerName" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>HomeAddress </label>
+            <input type="text" class="form-control" asp-for="HomeAddress" name="HomeAddress" placeholder="Enter HomeAddress" />
+            <span asp-validation-for="HomeAddress" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Email</label>
+            <input type="text" class="form-control" asp-for="Email" name="Email" placeholder="Enter Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>MobileNo</label>
+            <input type="text" class="form-control" asp-for="MobileNo" name="MobileNo" placeholder="Enter MobileNo" />
+            <span asp-validation-for="MobileNo" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>GST_NO</label>
+            <input type="text" class="form-control" asp-for="GST_NO" name="GST_NO" placeholder="Enter GST NO"  />
+            <span asp-validation-for="GST_NO" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>CityName</label>
+            <input type="text" class="form-control" asp-for="CityName" name="CityName" placeholder="Enter CityName" />
+            <span asp-validation-for="CityName" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>PinCode</label>
+            <input type="text" class="form-control" asp-for="PinCode" name="PinCode" placeholder="Enter PinCode" />
+            <span asp-validation-for="PinCode" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>NetAmount</label>
+            <input type="text" class="form-control" asp-for="NetAmount" name="NetAmount" placeholder="Enter NetAmount" />
+            <span asp-validation-for="NetAmount" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>UserID</label>
+            <input type="text" class="form-control mb-3" asp-for="UserID" name="UserID" placeholder="Enter UserID" />
+            <span asp-validation-for="UserID" class="text-danger"></span>
+
+         
+            <button class="btn btn-success">Submit</button>
+            <a asp-controller="Customer" asp-action="Customer" class="btn btn-danger ">Back</a>
+
+        </div>
+        </
+    </div>
+</form>
+

@@ -1,0 +1,49 @@
+﻿@model OrderDetailModel
+<form asp-action="Save" asp-controller="OrderDetail">
+    <div class="container">
+        <div class="form-group">
+
+            @if (Model.OrderDetailID != 0 && Model.OrderDetailID != null)
+            {
+                <input type="hidden" asp-for="OrderDetailID" />
+            }
+            <label><span class="text-danger">*</span>Order</label>
+            <select class="form-control" asp-for="OrderID" asp-items="@(ViewBag.OrderList != null ? new SelectList(ViewBag.OrderList, "OrderID", "Ordernumber") : null)">
+                <option value="">Select Order</option>
+            </select>
+            <span asp-validation-for="OrderID" class="text-danger"></span>
+            <br />
+
+            <label><span class="text-danger">*</span>Product</label>
+            <select class="form-control" asp-for="ProductID" asp-items="@(ViewBag.ProductList != null ? new SelectList(ViewBag.ProductList, "ProductID", "ProductName") : null)">
+                <option value="">Select Product</option>
+            </select>
+            <span asp-validation-for="ProductID" class="text-danger"></span>
+            <br />
+
+            <label><span class="text-danger">*</span>Quantity</label>
+            <input type="text" class="form-control" asp-for="Quantity" name="Quantity" placeholder="Enter Quantity" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+            <br />
+
+            <label><span class="text-danger">*</span>Amount</label>
+            <input type="text" class="form-control" asp-for="Amount" name="Amount" placeholder="Enter Amount"  />
+            <span asp-validation-for="Amount" class="text-danger"></span>
+            <br />
+
+            <label><span class="text-danger">*</span>Total Amount</label>
+            <input type="text" class="form-control" asp-for="TotalAmount" name="TotalAmount" placeholder="Enter TotalAmount"  />
+            <span asp-validation-for="TotalAmount" class="text-danger"></span>
+            <br />
+
+            <label><span class="text-danger">*</span>User ID</label>
+            <input type="text" class="form-control" asp-for="UserID" name="UserID" placeholder="Enter UserID"  />
+            <span asp-validation-for="UserID" class="text-danger"></span>
+
+            <br />
+            <button class="btn btn-success">Submit</button>
+            <a asp-controller="OrderDetail" asp-action="OrderDetail" class="btn btn-danger ">Back</a>
+
+        </div>
+    </div>
+</form>

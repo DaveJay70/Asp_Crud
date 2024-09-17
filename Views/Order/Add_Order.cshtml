@@ -1,0 +1,65 @@
+﻿@model OrderModel
+<h3>@TempData["OrderInsertMsg"]</h3>
+
+<form asp-action="Save" asp-controller="Order">
+    <div class="container">
+        <div class="form-group">
+
+            @if (Model.OrderID != null)
+            {
+                <input type="hidden" asp-for="OrderID" />
+            }
+
+            <label><span class="text-danger">*</span>Ordernumber </label>
+            <input type="number" class="form-control" asp-for="Ordernumber" name="Ordernumber" placeholder="Enter OrderNumber" />
+            <span asp-validation-for="Ordernumber" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>OrderDate </label>
+            <input type="date" class="form-control" asp-for="OrderDate" name="OrderDate" placeholder="Enter OrderDate" />
+            <span asp-validation-for="OrderDate" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>CustomerID </label>
+            <select class="form-control" asp-for="CustomerID" asp-items="@(new SelectList(ViewBag.CustomerList, "CustomerID", "CustomerName"))">
+                <option value="">Select Customer</option>
+            </select>
+            <span asp-validation-for="CustomerID" class="text-danger"></span>
+
+            <br />
+
+            <label>PaymentMode</label>
+@*             <input type="text" class="form-control" asp-for="PaymentMode" name="PaymentMode" placeholder="Enter PaymentMode" />
+ *@            <select class="form-control" asp-for="PaymentMode">
+                <option value="">Select PaymentMode</option>
+                <option value="1">CreditCard</option>
+                <option value="2">Cash</option>
+                <option value="3">UPI</option>
+            </select> 
+            <span asp-validation-for="PaymentMode" class="text-danger"></span>
+            <br />
+            <label>TotalAmount</label>
+            <input type="text" class="form-control" asp-for="TotalAmount" name="TotalAmount" placeholder="Enter TotalAmount" /> 
+            <span asp-validation-for="TotalAmount" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>ShippingAddress</label>
+            <textarea type="text" class="form-control" asp-for="ShippingAddress" name="ShippingAddress" placeholder="Enter ShippingAddress"></textarea>
+            <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>UserID</label>
+            <input type="text" class="form-control mb-3" asp-for="UserID" name="UserID" placeholder="Enter UserID" /> 
+            <span asp-validation-for="UserID" class="text-danger"></span>
+
+
+            <button class="btn btn-success">Submit</button>
+            <a asp-controller="Order" asp-action="Order" class="btn btn-danger ">Back</a>
+
+        </div>
+        </
+    </div>
+</form>
+

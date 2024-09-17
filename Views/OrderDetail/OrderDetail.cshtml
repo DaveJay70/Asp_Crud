@@ -1,0 +1,56 @@
+﻿@model DataTable
+@using System.Data
+<h3>@TempData["OrderDetailInsertMsg"]</h3>
+
+
+<main>
+    <h1 class="text-center" style="font-family:'Times New Roman', Times, serif">OrderDetail List</h1>
+
+    <!-- Table with hoverable rows -->
+    <div class="my-3">
+        <a class="btn btn-primary" asp-controller="OrderDetail" asp-action="Add_OrderDetail">Add User</a>
+        <span>@TempData["errormsg"]</span>
+
+    </div>
+    <table class="table table-hover">
+        <thead>
+           
+            <tr>
+                <th scope="col">OrderDetailID</th>
+                <th scope="col">OrderID</th>
+                <th scope="col">ProductID</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">UserID</th>
+                <th scope="col">Actions</th> <!-- Added column for actions -->
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dataRow in  Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["OrderDetailID"]</td>
+                    <td>@dataRow["OrderID"]</td>
+                    <td>@dataRow["ProductID"]</td>
+                    <td>@dataRow["Quantity"]</td>
+                    <td>@dataRow["Amount"]</td>
+                    <td>@dataRow["TotalAmount"]</td>
+                    <td>@dataRow["UserID"]</td>
+                    <td>
+                        <a asp-action="Add_OrderDetail" asp-route-OrderDetailID="@dataRow["OrderDetailID"]" class="btn btn-outline-primary btn-sm mb-2">Edit</a>
+
+                        <form method="post" asp-controller="OrderDetail" asp-action="Delete_Orderdetail" style="display:inline;">
+                            <input type="hidden" name="OrderDetailID" value="@dataRow["OrderDetailID"]"  />
+                            <button onclick="return confirm('Delete?')" type="submit" class="btn btn-outline-danger btn-xs ">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!-- End Table with hoverable rows -->
+</main>

@@ -1,0 +1,59 @@
+﻿@model DataTable
+<h3>@TempData["BillInsertMsg"]</h3>
+
+@using System.Data
+
+
+<main >
+    <h1 class="text-center" style="font-family:'Times New Roman', Times, serif">Bills List</h1>
+
+    <!-- Table with hoverable rows -->
+    <div class="my-3"><a class="btn btn-primary" asp-controller="Bills" asp-action="AddBills">Add Bills</a></div>
+    <span>@TempData["errormsg"]</span>
+
+    <table class="table table-hover">
+
+        <thead>
+            
+            <tr>
+                <th scope="col">BillID</th>
+                <th scope="col">Bill Number</th>
+                <th scope="col">Bill Date</th>
+                <th scope="col">OrderID</th>
+                <th scope="col">TotalAmount</th>
+                <th scope="col">Discount</th>
+                <th scope="col">NetAmount</th>
+                <th scope="col">UserID</th>
+                <th scope="col">Actions</th> <!-- Added column for actions -->
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dataRow in Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["BillID"]</td>
+                    <td>@dataRow["BillNumber"]</td>
+                    <td>@dataRow["BillDate"]</td>
+                    <td>@dataRow["OrderID"]</td>
+                    <td>@dataRow["TotalAmount"]</td>
+                    <td>@dataRow["Discount"]</td>
+                    <td>@dataRow["NetAmount"]</td>
+                    <td>@dataRow["UserID"]</td>
+                    <td>
+                        <a asp-action="AddBills" asp-route-BillID="@dataRow["BillID"]" class="btn btn-outline-primary btn-sm mb-2 ">Edit</a>
+
+                        <form method="post" asp-controller="Bills" asp-action="DeleteBill" style="display:inline;">
+                            <input type="hidden" name="BillID" value="@dataRow["BillID"]" />
+                            <button onclick="return confirm('Delete?')" type="submit" class="btn btn-outline-danger btn-xs">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!-- End Table with hoverable rows -->
+</main>

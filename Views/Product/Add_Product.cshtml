@@ -1,0 +1,52 @@
+﻿@model ProductModel
+
+<form method="post" asp-action="Save" asp-controller="Product">
+    <div class="container">
+
+        @if (Model.ProductID != null)
+        {
+            <input type="hidden" asp-for="ProductID" />
+        }
+
+        <div class="form-group">
+            <label><span class="text-danger">*</span>Product Name</label>
+            <input type="text" class="form-control" asp-for="ProductName" placeholder="Enter Product Name" />
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Product Price</label>
+            <input type="number" class="form-control" asp-for="ProductPrice" placeholder="Enter Product Price" />
+            <span asp-validation-for="ProductPrice" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Product Code</label>
+            <input type="text" class="form-control" asp-for="ProductCode" placeholder="Enter Product Code" />
+            <span asp-validation-for="ProductCode" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Description</label>
+            <input type="text" class="form-control" asp-for="Description" placeholder="Enter Product Description " />
+            <span asp-validation-for="Description" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>User ID</label>
+            <input type="text" class="form-control mb-2" asp-for="UserID" placeholder="Enter UserID" />
+            <span asp-validation-for="UserID" class="text-danger"></span>
+
+            <br />
+
+            <button class="btn btn-success">Submit</button>
+            <a asp-controller="Product" asp-action="Product" class="btn btn-danger ">Back</a>
+
+        </div>
+
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

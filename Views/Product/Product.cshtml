@@ -1,0 +1,54 @@
+﻿@model DataTable
+@using System.Data
+<h3>@TempData["ProductInsertMsg"]</h3>
+
+<main>
+   
+    <!-- Table with hoverable rows -->
+    <div class="card-md-9">
+        <h1 class="text-center" style="font-family:'Times New Roman', Times, serif">Product List</h1>
+        <span>@TempData["errormsg"]</span>
+        <div class="my-3">
+            <a class="btn btn-primary ms-2" asp-controller="Product" asp-action="Add_Product">Add Product</a>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ProductID</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Product Code</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">UserID</th>
+                    <th scope="col">Actions</th> <!-- Added column for actions -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DataRow dataRow in Model.Rows)
+                {
+                    <tr>
+                        <td>@dataRow["ProductID"]</td>
+                        <td>@dataRow["ProductName"]</td>
+                        <td>@dataRow["ProductPrice"]</td>
+                        <td>@dataRow["ProductCode"]</td>
+                        <td>@dataRow["Description"]</td>
+                        <td>@dataRow["UserID"]</td>
+                        <td>
+                            <a asp-action="Add_Product" asp-route-ProductID="@dataRow["ProductID"]" class="btn btn-outline-primary btn-sm   ">Edit</a>
+
+                            <form method="post" asp-controller="Product" asp-action="ProductDelete" style="display:inline;">
+                                <input type="hidden" name="ProductID" value="@dataRow["ProductID"]" />
+                                <button onclick="return confirm('Delete?')" type="submit" class="btn btn-outline-danger btn-sm">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- End Table with hoverable rows -->
+</main>

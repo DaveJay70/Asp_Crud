@@ -1,0 +1,50 @@
+﻿@model UserModel
+<form asp-action="Save" asp-controller="User">
+    <div class="container">
+        <div class="form-group">
+
+            <input type="hidden" asp-for="UserID" />
+
+
+            <label><span class="text-danger">*</span>User Name </label>
+            <input type="text" class="form-control" asp-for="UserName" name="UserName" placeholder="Enter UserName" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Email </label>
+            <input type="text" class="form-control" asp-for="Email" name="Email" placeholder="Enter Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Password</label>
+            <input type="text" class="form-control" asp-for="Password" name="Password" placeholder="Enter Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Mobile No</label>
+            <input type="text" class="form-control" asp-for="MobileNo" name="MobileNo" placeholder="Enter MobileNo" />
+            <span asp-validation-for="MobileNo" class="text-danger"></span>
+
+            <br />
+
+            <label><span class="text-danger">*</span>Address</label>
+            <input type="text" class="form-control" asp-for="Address" name="Address" placeholder="Enter Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+
+            <br />
+            <label><span class="text-danger">*</span>IsActive</label>
+            <input type="text" class="form-control " asp-for="IsActive" name="IsActive" placeholder="Enter ISActive" />
+            <span asp-validation-for="IsActive" class="text-danger"></span>
+
+            <br />
+            <button class="btn btn-success">Submit</button>
+            <a asp-controller="User" asp-action="User" class="btn btn-danger ">Back</a>
+
+        </div>
+        </
+    </div>
+</form>
+

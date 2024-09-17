@@ -1,0 +1,58 @@
+﻿@model DataTable
+@using System.Data
+<h3>@TempData["UserInsertMsg"]</h3>
+
+<main>
+    <!-- Table with hoverable rows -->
+    <h1 class="text-center" style="font-family:'Times New Roman', Times, serif">User List</h1>
+    <div class="my-3">
+    <div class="my-3">
+        <a class="btn btn-primary" asp-controller="User" asp-action="Add_User">Add User</a>
+
+    </div>
+    <span>@TempData["errormsg"]</span>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            </tr>
+            <tr>
+                <th scope="col">UserID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Mobile No</th>
+                <th scope="col">Address</th>
+                <th scope="col">IsActive</th>
+                <th scope="col">Actions</th> <!-- Added column for actions -->
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dataRow in Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["UserID"]</td>
+                    <td>@dataRow["UserName"]</td>
+                    <td>@dataRow["Email"]</td>
+                    <td>@dataRow["Password"]</td>
+                    <td>@dataRow["MobileNo"]</td>
+                    <td>@dataRow["Address"]</td>
+                    <td>@dataRow["IsActive"]</td>
+                    
+                    <td>
+                        <a asp-action="Add_User" asp-route-UserID ="@dataRow["UserID"]" class="btn btn-outline-primary btn-sm">Edit</a>
+
+                        <form method="post" asp-controller="User" asp-action="UserDelete" style="display:inline;">
+                            <input type="hidden" name="UserID" value="@dataRow["UserID"]" />
+                            <button onclick="return confirm('Delete?')" type="submit" class="btn btn-outline-danger btn-sm">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <!-- End Table with hoverable rows -->
+</main>

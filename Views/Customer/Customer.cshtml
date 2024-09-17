@@ -1,0 +1,61 @@
+﻿@model DataTable
+@using System.Data
+<h3>@TempData["CustomerInsertMsg"]</h3>
+
+
+<main >
+    <h1 class="text-center" style="font-family:'Times New Roman', Times, serif">Customer List</h1>
+
+    <!-- Table with hoverable rows -->
+    <div class="my-3"><a class="btn btn-primary" asp-controller="Customer" asp-action="Add_Customer">Add Customer</a></div>
+    <span>@TempData["errormsg"]</span>
+
+    <table class="table table-hover">
+        <thead>
+                
+            <tr>
+                <th scope="col">CustomerID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">HomeAddress</th>
+                <th scope="col">Email</th>
+                <th scope="col">MobileNo</th>
+                <th scope="col">GST_NO</th>
+                <th scope="col">CityName</th>
+                <th scope="col">PinCode</th>
+                <th scope="col">NetAmount</th>
+                <th scope="col">UserID</th>
+                <th scope="col">Actions</th> <!-- Added column for actions -->
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dataRow in Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["CustomerID"]</td>
+                    <td>@dataRow["CustomerName"]</td>
+                    <td>@dataRow["HomeAddress"]</td>
+                    <td>@dataRow["Email"]</td>
+                    <td>@dataRow["MobileNo"]</td>
+                    <td>@dataRow["GST_NO"]</td>
+                    <td>@dataRow["CityName"]</td>
+                    <td>@dataRow["PinCode"]</td>
+                    <td>@dataRow["NetAmount"]</td>
+                    <td>@dataRow["UserID"]</td>
+                    <td>
+                        <a asp-action="Add_Customer" asp-route-CustomerID="@dataRow["CustomerID"]" class="btn btn-outline-primary btn-sm mb-2 ">Edit</a>
+
+                        <form method="post" asp-controller="Customer" asp-action="DeleteCustomer" style="display:inline;">
+                            <input type="hidden" name="CustomerID" value="@dataRow["CustomerID"]" />
+                            <button onclick="return confirm('Delete?')" type="submit" class="btn btn-outline-danger btn-xs">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!-- End Table with hoverable rows -->
+</main>
