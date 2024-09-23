@@ -1,4 +1,5 @@
 ﻿@model DataTable
+
 @using System.Data
 <h3>@TempData["OrderDetailInsertMsg"]</h3>
 
@@ -17,8 +18,8 @@
            
             <tr>
                 <th scope="col">OrderDetailID</th>
-                <th scope="col">OrderID</th>
-                <th scope="col">ProductID</th>
+                <th scope="col">OrderNumber</th>
+                <th scope="col">ProductName</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Total Amount</th>
@@ -32,8 +33,8 @@
             {
                 <tr>
                     <td>@dataRow["OrderDetailID"]</td>
-                    <td>@dataRow["OrderID"]</td>
-                    <td>@dataRow["ProductID"]</td>
+                    <td>@dataRow["Ordernumber"]</td>
+                    <td>@dataRow["ProductName"]</td>
                     <td>@dataRow["Quantity"]</td>
                     <td>@dataRow["Amount"]</td>
                     <td>@dataRow["TotalAmount"]</td>

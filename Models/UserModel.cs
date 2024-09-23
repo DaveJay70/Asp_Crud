@@ -20,8 +20,20 @@ namespace Static_crud.Models
         public string MobileNo { get; set; }
         [Required]
         public string Address { get; set; }
-        [Required]
+       
 
         public bool IsActive  { get; set; } 
     }
+
+    
+    
+    public class UserLoginModel
+    {
+        [Required(ErrorMessage = "Username is required.")]
+        public string UserName { get; set; }
+        [Required(ErrorMessage = "Password is required.")]
+        public string Password { get; set; }
+    }
+   
 }
+

@@ -2,9 +2,11 @@
 using Static_crud.Models;
 using System.Data.SqlClient;
 using System.Data;
+using Static_crud.BAL;
 
 namespace Static_crud.Controllers
 {
+    [CheckAccess]
     public class ProductController : Controller
     {
         #region Configuration

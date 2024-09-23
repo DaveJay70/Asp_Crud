@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Static_crud.BAL;
 using Static_crud.Models;
 using System.Diagnostics;
 
 namespace Static_crud.Controllers
 {
+    [CheckAccess]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

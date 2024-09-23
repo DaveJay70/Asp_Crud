@@ -34,7 +34,7 @@
             <br />
 
             <label><span class="text-danger">*</span>User ID</label>
-            <input type="text" class="form-control mb-2" asp-for="UserID" placeholder="Enter UserID" />
+            <input type="text" class="form-control mb-2" asp-for="UserID" value="@Context.Session.GetString("UserID")" readonly placeholder="Enter UserID" />
             <span asp-validation-for="UserID" class="text-danger"></span>
 
             <br />

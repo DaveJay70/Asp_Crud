@@ -53,7 +53,7 @@
 
             <br />
             <label><span class="text-danger">*</span>UserID</label>
-            <input type="text" class="form-control mb-3" asp-for="UserID" name="UserID" placeholder="Enter UserID" />
+            <input type="text" class="form-control mb-3" asp-for="UserID" name="UserID" value="@Context.Session.GetString("UserID")" readonly placeholder="Enter UserID" />
             <span asp-validation-for="UserID" class="text-danger"></span>
 
          
